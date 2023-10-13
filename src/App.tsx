@@ -13,7 +13,7 @@ import { UpdateUserProfile } from './type/upload.type';
 
 function App() {
   const queryClient = useQueryClient();
-  const USER_DETAIL_ID = 'clmuh7tbx0000mg640sfh07dv';
+  const USER_DETAIL_ID = 'clno3wqln0000mgso9a8p76pn';
   const { data } = useQuery('userDetail', () =>
     getUserDetails({ id: USER_DETAIL_ID })
   );
@@ -36,9 +36,9 @@ function App() {
         key: (file as File).name,
         type: (file as File).type,
       });
+
       const uploadUrl = data?.signedRequest;
       const url = data?.url;
-
       if (uploadUrl) {
         await uploadFile({
           file: file as Blob,
@@ -59,9 +59,10 @@ function App() {
   return (
     <div>
       <b>Profile detail</b>
-      <p>username: {userDetails?.username}</p>
+      <p>first name: {userDetails?.firstName}</p>
+      <p>last name: {userDetails?.lastName}</p>
       <p>email: {userDetails?.email}</p>
-      <p>status: {userDetails?.status}</p>
+      <p>phone: {userDetails?.phoneNumber}</p>
       <p>Avatar:</p>
       <div>
         <Avatar
